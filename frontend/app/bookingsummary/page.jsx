@@ -1,13 +1,13 @@
 "use client";
 import { useSearchParams } from 'next/navigation';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, Suspense } from 'react';
 
-const Page = () => {
+const BookingSummary = () => {
   const searchParams = useSearchParams();
   const [params, setParams] = useState({});
 
   useEffect(() => {
-    
+
     setParams({
       date: searchParams.get("date"),
       time: searchParams.get("time"),
@@ -18,7 +18,7 @@ const Page = () => {
   }, [searchParams]);
 
   if (!params.name) {
-    // Optionally, handle the case where required parameters are missing
+
     return <div>Loading...</div>;
   }
 
@@ -38,5 +38,11 @@ const Page = () => {
     </div>
   );
 };
+
+const Page = () => (
+  <Suspense fallback={<div>Loading Booking Summary...</div>}>
+    <BookingSummary />
+  </Suspense>
+);
 
 export default Page;
