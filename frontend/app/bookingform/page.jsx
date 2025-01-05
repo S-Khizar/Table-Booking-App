@@ -52,7 +52,7 @@ const Page = () => {
       const data = await response.json();
 
       if (response.ok) {
-        // Ensure you're passing a string to router.push()
+     
       const bookingDetails = new URLSearchParams(form).toString();
       router.push(`/bookingsummary?${bookingDetails}`);
       } else {
@@ -67,8 +67,8 @@ const Page = () => {
   };
 
   return (
-    
-    <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-gray-900 p-6 rounded shadow text-red-700 ">
+    <div className='flex justify-center items-center min-h-screen '>
+       <form onSubmit={handleSubmit} className=" w-full mx-auto bg-gray-900 p-6 rounded shadow text-red-700  ">
       <h2 className="text-2xl font-bold mb-4">Book a Table</h2>
       <div className="mb-4">
         <label className="block mb-1 font-semibold">Date</label>
@@ -148,6 +148,9 @@ const Page = () => {
 
       {error && <p className="text-red-500 mt-2">{error}</p>}
     </form>
+
+    </div>
+   
   );
 };
 
